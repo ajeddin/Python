@@ -12,6 +12,9 @@ def user_choice():
         if choice.isdigit() == False:
             print("That's not a digit")
     return int(choice)
-
-
+# TEST 
+def func(s):
+    s = s**2
+    return num
+print(func(3))
 user_choice()
