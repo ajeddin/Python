@@ -72,3 +72,4 @@ def pang(s):
     return ss == helloo 
 print(pang(my))
 
+ 
