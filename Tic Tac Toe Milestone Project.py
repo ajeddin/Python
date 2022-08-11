@@ -35,6 +35,8 @@ def display(game_display):
     print(game_display[7]+'|' +game_display[8]+'|'+game_display[9])
 display(board)
 def user_input():
+    global playerone
+    global playertwo
     playerone = ''
     playertwo = ''
     Acceptable_values= ['X','O']
@@ -51,9 +53,6 @@ def user_input():
                 playertwo= "X"
             print(f"Player 2 your marker is {playertwo}")
             break
-    return (playerone,playertwo)
-playerone = user_input(playerone)
-playertwo = user_input(playertwo)
 user_input()
 def user_choice():
     choice = ''
@@ -90,10 +89,10 @@ def user_choice():
                 print(f"Between {acceptable_range}")
     return display(board)
 user_choice()
-playeronewin= False
-playertwowin=False
-draw = False
 def no_win():
+    global playeronewin
+    global playertwowin
+    global draw
     playeronewin= False
     playertwowin=False
     draw = False
@@ -135,7 +134,6 @@ def no_win():
             break
     if turn == 9:
         draw = True
-    return playeronewin,playertwowin,draw
 no_win()
 scoreboard = [0,0]
 def if_win():
