@@ -1,13 +1,8 @@
-
-
-
-
-
 game_list = [0,1,2]
 def display(game_list):
     print("Here is the current list: " )
     print(game_list)
-
+display(game_list)
 def position_choice():
     choices = 'WRONG'
     acceptable_values= [0,1,2]
