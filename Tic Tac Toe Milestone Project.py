@@ -24,6 +24,9 @@
 #             if playeronelist.isdigit() == True:
 #                 if 
 
+
+
+
 board = ['-','-','-','-','-','-','-','-','-','-']
 def display(game_display):
     # clearoutput() might be useful 
@@ -31,10 +34,7 @@ def display(game_display):
     print(game_display[4]+'|' +game_display[5]+'|'+game_display[6])
     print(game_display[7]+'|' +game_display[8]+'|'+game_display[9])
 display(board)
-
 def user_input():
-    global playerone 
-    global playertwo 
     playerone = ''
     playertwo = ''
     Acceptable_values= ['X','O']
@@ -51,12 +51,15 @@ def user_input():
                 playertwo= "X"
             print(f"Player 2 your marker is {playertwo}")
             break
-    return playerone and playertwo
+    return (playerone,playertwo)
+playerone = user_input(playerone)
+playertwo = user_input(playertwo)
 user_input()
 def user_choice():
     choice = ''
     acceptable_range= [1,2,3,4,5,6,7,8,9]
     within_range= False
+    global turn
     turn = 0
     while choice.isdigit() == False or within_range==False:
         choice = input(f"Player 1, Where do you want to place your {playerone} (1-9): ")
@@ -68,9 +71,8 @@ def user_choice():
                 acceptable_range.remove(int(choice)) 
                 board[int(choice)]= playerone
                 turn +=1 
-                print(acceptable_range)
             else:
-                print("Between 1-9")
+                print(f"Between {acceptable_range}")
                 
     choice = ''
     within_range=False
@@ -84,10 +86,73 @@ def user_choice():
                 acceptable_range.remove(int(choice)) 
                 board[int(choice)]= playertwo
                 turn +=1
-                print(turn)
             else:
-                print("Between 1-9")
+                print(f"Between {acceptable_range}")
     return display(board)
 user_choice()
-# def no_win():
+playeronewin= False
+playertwowin=False
+draw = False
+def no_win():
+    playeronewin= False
+    playertwowin=False
+    draw = False
+    while playeronewin ==False:
+        if board[1] and board[2] and board[3] == playerone:
+            playeronewin=True
+        elif board[1] and board[4] and board[7] == playerone:
+            playeronewin=True
+        elif board[1] and board[5] and board[9] == playerone:
+            playeronewin=True
+        elif board[4] and board[5] and board[6] == playerone:
+            playeronewin=True
+        elif board[7] and board[8] and board[9] == playerone:
+            playeronewin=True
+        elif board[2] and board[5] and board[8] == playerone:
+            playeronewin=True
+        elif board[3] and board[6] and board[9] == playerone:
+            playeronewin=True
+        else:
+            playeronewin= False
+            break
+    while playertwowin ==False:
+        if board[1] and board[2] and board[3] == playertwo:
+            playertwowin=True
+        elif board[1] and board[4] and board[7] == playertwo:
+            playertwowin=True
+        elif board[1] and board[5] and board[9] == playertwo:
+            playertwowin=True
+        elif board[4] and board[5] and board[6] == playertwo:
+            playertwowin=True
+        elif board[7] and board[8] and board[9] == playertwo:
+            playertwowin=True
+        elif board[2] and board[5] and board[8] == playertwo:
+            playertwowin=True
+        elif board[3] and board[6] and board[9] == playertwo:
+            playertwowin=True
+        else:
+            playertwowin=False    
+            break
+    if turn == 9:
+        draw = True
+    return playeronewin,playertwowin,draw
+no_win()
+scoreboard = [0,0]
+def if_win():
+    while playeronewin==True or playertwowin== True or draw==True:
+        if playeronewin==True:
+            scoreboard[0] +=1
+            print('Player 1 has won!')
+            break
+        if playertwowin==True:
+            scoreboard[1] +=1
+            print('Player 2 has won!')
+            break
+        if draw == True:
+            print("It's a draw")
+            break
+    while playeronewin==False and playertwowin== False and draw==False:
+        user_choice()
+        no_win()
+if_win()
     

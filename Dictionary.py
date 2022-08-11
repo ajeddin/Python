@@ -5,6 +5,7 @@ mydict = {'milk': '$3.29', 'apple':'$1.29','onion':'$4'}
 print(mydict['milk'])
 dict= {'k1': ['d','c','s']}
 print(dict['k1'])
+print("\n")
 letter = dict["k1"][2]
 print(letter.upper())
 dict['k3']=500
