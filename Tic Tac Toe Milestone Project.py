@@ -1,32 +1,3 @@
-
-
-# list1 = ['','','']
-# list2 = ['','','']
-# list3 = ['','','']
-# def display(list1, list2, list3):
-#     print("Here is the current board: " )
-#     print(list1)
-#     print(list2)
-#     print(list3)
-    
-# display(list1, list2, list3)
-# def list_row_position():
-#     playeronelist= []
-#     playeronerow= []
-#     playertwolist= []
-#     playertworow= []
-#     within_range= False
-#     acceptable_range= range(0,3)
-#         while playeronelist.isdigit() ==False:
-#             playeronelist = input("Which line between 0 - 1 - 2 do you want to put X on? ")
-#             if playeronelist.isdigit()== False:
-#                 print("Please enter a number! ")
-#             if playeronelist.isdigit() == True:
-#                 if 
-
-
-
-
 board = ['-','-','-','-','-','-','-','-','-','-']
 def display(game_display):
     # clearoutput() might be useful 
@@ -97,37 +68,37 @@ def no_win():
     playertwowin=False
     draw = False
     while playeronewin ==False:
-        if board[1] and board[2] and board[3] == playerone:
+        if (board[1] and board[2] and board[3]) == playerone:
             playeronewin=True
-        elif board[1] and board[4] and board[7] == playerone:
+        elif (board[1] and board[4] and board[7]) == playerone:
             playeronewin=True
-        elif board[1] and board[5] and board[9] == playerone:
+        elif (board[1] and board[5] and board[9]) == playerone:
             playeronewin=True
-        elif board[4] and board[5] and board[6] == playerone:
+        elif (board[4] and board[5] and board[6]) == playerone:
             playeronewin=True
-        elif board[7] and board[8] and board[9] == playerone:
+        elif (board[7] and board[8] and board[9]) == playerone:
             playeronewin=True
-        elif board[2] and board[5] and board[8] == playerone:
+        elif (board[2] and board[5] and board[8]) == playerone:
             playeronewin=True
-        elif board[3] and board[6] and board[9] == playerone:
+        elif (board[3] and board[6] and board[9]) == playerone:
             playeronewin=True
         else:
             playeronewin= False
             break
     while playertwowin ==False:
-        if board[1] and board[2] and board[3] == playertwo:
+        if (board[1] and board[2] and board[3]) == playertwo:
             playertwowin=True
-        elif board[1] and board[4] and board[7] == playertwo:
+        elif (board[1] and board[4] and board[7]) == playertwo:
             playertwowin=True
-        elif board[1] and board[5] and board[9] == playertwo:
+        elif (board[1] and board[5] and board[9]) == playertwo:
             playertwowin=True
-        elif board[4] and board[5] and board[6] == playertwo:
+        elif (board[4] and board[5] and board[6]) == playertwo:
             playertwowin=True
-        elif board[7] and board[8] and board[9] == playertwo:
+        elif (board[7] and board[8] and board[9]) == playertwo:
             playertwowin=True
-        elif board[2] and board[5] and board[8] == playertwo:
+        elif (board[2] and board[5] and board[8]) == playertwo:
             playertwowin=True
-        elif board[3] and board[6] and board[9] == playertwo:
+        elif (board[3] and board[6] and board[9]) == playertwo:
             playertwowin=True
         else:
             playertwowin=False    
@@ -135,22 +106,40 @@ def no_win():
     if turn == 9:
         draw = True
 no_win()
-scoreboard = [0,0]
 def if_win():
-    while playeronewin==True or playertwowin== True or draw==True:
+    while playeronewin==False or playertwowin== False or draw==False:
         if playeronewin==True:
-            scoreboard[0] +=1
             print('Player 1 has won!')
             break
         if playertwowin==True:
-            scoreboard[1] +=1
             print('Player 2 has won!')
             break
         if draw == True:
             print("It's a draw")
             break
-    while playeronewin==False and playertwowin== False and draw==False:
-        user_choice()
-        no_win()
+        else:
+            user_choice()
+            no_win()
 if_win()
+
+def gameon_choice():
+    choices = 'WRONG'
+
+    while choices not in ['Y', 'N']:
+        choices= input("Do you want to continue playing (Y or N): ")
+        if choices not in ['Y', 'N']:
+            print("Sorry, I don't understand, Please choose Y or N: ")
+    if choices== "Y":
+        return True
+    else:
+        return False
+game_on= gameon_choice()
+board = ['-','-','-','-','-','-','-','-','-','-']
+while game_on:
+    display(board)
+    user_input()
+    user_choice()
+    no_win()
+    if_win()
+    game_on=gameon_choice()
     
