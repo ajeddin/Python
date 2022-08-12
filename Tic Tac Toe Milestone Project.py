@@ -1,9 +1,9 @@
-board = ['-','-','-','-','-','-','-','-','-','-']
+board = ['-','-','-','-','-','-','-','-','-']
 def display(game_display):
     # clearoutput() might be useful 
-    print(game_display[1]+'|' +game_display[2]+'|'+game_display[3])
-    print(game_display[4]+'|' +game_display[5]+'|'+game_display[6])
-    print(game_display[7]+'|' +game_display[8]+'|'+game_display[9])
+    print(game_display[0]+'|' +game_display[1]+'|'+game_display[2])
+    print(game_display[3]+'|' +game_display[4]+'|'+game_display[5])
+    print(game_display[6]+'|' +game_display[7]+'|'+game_display[8])
 display(board)
 def user_input():
     global playerone
@@ -27,22 +27,29 @@ def user_input():
 user_input()
 def user_choice():
     choice = ''
-    acceptable_range= [1,2,3,4,5,6,7,8,9]
+    acceptable_range= [0,1,2,3,4,5,6,7,8]
     within_range= False
     global turn
     turn = 0
+
     while choice.isdigit() == False or within_range==False:
         choice = input(f"Player 1, Where do you want to place your {playerone} (1-9): ")
+
         if choice.isdigit() == False:
             print("Please enter a digit betweeen 1-9: ")
         if choice.isdigit() == True:
-            if int(choice) in acceptable_range:
+            choice= int(choice)-1
+
+            if choice in acceptable_range:
                 within_range= True
-                acceptable_range.remove(int(choice)) 
-                board[int(choice)]= playerone
+                acceptable_range.remove(choice) 
+                board[choice]= playerone
                 turn +=1 
+                break
             else:
                 print(f"Between {acceptable_range}")
+        
+
                 
     choice = ''
     within_range=False
@@ -51,11 +58,13 @@ def user_choice():
         if choice.isdigit() == False:
             print("Please enter a digit betweeen 1-9: ")
         if choice.isdigit() == True:
-            if int(choice) in acceptable_range:
+            choice= int(choice)-1
+            if choice in acceptable_range:
                 within_range= True
-                acceptable_range.remove(int(choice)) 
-                board[int(choice)]= playertwo
-                turn +=1
+                acceptable_range.remove(choice) 
+                board[choice]= playertwo
+                turn +=1 
+                break
             else:
                 print(f"Between {acceptable_range}")
     return display(board)
@@ -68,37 +77,37 @@ def no_win():
     playertwowin=False
     draw = False
     while playeronewin ==False:
-        if (board[1] and board[2] and board[3]) == playerone:
+        if board[0]  == playerone and board[1] == playerone and board[2] == playerone:
             playeronewin=True
-        elif (board[1] and board[4] and board[7]) == playerone:
+        elif board[0] == playerone and board[3] == playerone and board[6] == playerone:
             playeronewin=True
-        elif (board[1] and board[5] and board[9]) == playerone:
+        elif board[0] == playerone and board[4] == playerone and board[8] == playerone:
             playeronewin=True
-        elif (board[4] and board[5] and board[6]) == playerone:
+        elif board[3] == playerone and board[4] == playerone and board[5] == playerone:
             playeronewin=True
-        elif (board[7] and board[8] and board[9]) == playerone:
+        elif board[6] == playerone and board[7] == playerone and board[8] == playerone:
             playeronewin=True
-        elif (board[2] and board[5] and board[8]) == playerone:
+        elif board[1] == playerone and board[4] == playerone and board[7] == playerone:
             playeronewin=True
-        elif (board[3] and board[6] and board[9]) == playerone:
+        elif board[2] == playerone and board[5] == playerone and board[8] == playerone:
             playeronewin=True
         else:
             playeronewin= False
             break
     while playertwowin ==False:
-        if (board[1] and board[2] and board[3]) == playertwo:
+        if board[0] == playerone and board[1] == playerone and board[2] == playertwo:
             playertwowin=True
-        elif (board[1] and board[4] and board[7]) == playertwo:
+        elif board[0] == playerone and board[3] == playerone and board[6] == playertwo:
             playertwowin=True
-        elif (board[1] and board[5] and board[9]) == playertwo:
+        elif board[0] == playerone and board[4] == playerone and board[8] == playertwo:
             playertwowin=True
-        elif (board[4] and board[5] and board[6]) == playertwo:
+        elif board[3] == playerone and board[4] == playerone and board[5] == playertwo:
             playertwowin=True
-        elif (board[7] and board[8] and board[9]) == playertwo:
+        elif board[6] == playerone and board[7] == playerone and board[8] == playertwo:
             playertwowin=True
-        elif (board[2] and board[5] and board[8]) == playertwo:
+        elif board[1] == playerone and board[4] == playerone and board[7] == playertwo:
             playertwowin=True
-        elif (board[3] and board[6] and board[9]) == playertwo:
+        elif board[2] == playerone and board[5] == playerone and board[8] == playertwo:
             playertwowin=True
         else:
             playertwowin=False    
