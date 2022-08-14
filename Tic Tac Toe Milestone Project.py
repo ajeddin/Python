@@ -45,9 +45,12 @@ def user_choice():
                 acceptable_range.remove(choice) 
                 board[choice]= playerone
                 turn +=1 
+                display(board)
+
                 break
             else:
                 print(f"Between {acceptable_range}")
+                choice= str(choice)
         
 
                 
@@ -67,6 +70,8 @@ def user_choice():
                 break
             else:
                 print(f"Between {acceptable_range}")
+                choice= str(choice)
+
     return display(board)
 user_choice()
 def no_win():
@@ -112,7 +117,7 @@ def no_win():
         else:
             playertwowin=False    
             break
-    if turn == 9:
+    if turn == 8:
         draw = True
 no_win()
 def if_win():
