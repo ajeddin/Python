@@ -1,7 +1,31 @@
 # Bank Account with 2 Attributes & 2 Methods
 # Owner & Balance
 # Deposit & Withdraw
-from secrets import choice
+
+
+def create_bank():
+    print('Welcome to Cyprus National Bank')
+    name = ''
+    balance=''
+    nametrue=False
+    balancefalse=False
+    while nametrue == False:
+        name = input("Start with your name: ")
+        if name.replace(" ","").isalpha()==False:
+            print('Your name should not include numbers, right?')
+        else:
+            name = name.title()
+            nametrue=True
+    while balancefalse == False:
+        balance= input('How much money do you want to deposit today: ')
+        if balance.isdigit() == False:
+            print("Only insert digits")
+        else:
+            balancefalse=True
+        
+    return (name,int(balance))
+
+(x,y)=create_bank()
 
 
 class Bank():
@@ -19,8 +43,8 @@ class Bank():
             print('Sorry not enough funds!')
     def __str__(self):
         return f'Owner:  {self.owner}\nBalance: {self.balance} '
-a = Bank('Abdul', 4200)
-print(str(a))
+a = Bank(x, y)
+# print(str(a))
 def func():
     amount= 0
     withd=False
