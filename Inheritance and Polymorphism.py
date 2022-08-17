@@ -1,4 +1,4 @@
-# base class
+# base class Inheritance 
 class Animal():
     def __init__(self):
         print("Animal Created")
@@ -21,3 +21,33 @@ mydog = Dog()
 mydog.eat()
 mydog.who_am_i()
 mydog.bark()
+# Polymorphism
+class Dog():
+    def __init__(self,name):
+        self.name= name
+    def speak(self):
+        return self.name + ' says woof'
+class Cat():
+    def __init__(self,name):
+        self.name= name
+    def speak(self):
+        return self.name + ' says meow!'
+neko= Dog('neko')
+felix= Cat('Felix')
+print(felix.speak())
+for pets in [neko,felix]:
+    print(type(pets))
+    print(pets.speak())
+class Animal():
+    def __init__(self,name):
+        self.name=name
+    def speak (self):
+        raise NotImplementedError("Subclass must implement this abstract method")
+class Dog():
+    def speak(self):
+        return self.name+ ' says woof!'
+class Cat():
+    def speak(self):
+        return self.name+ ' says meow!!'
+fido=Dog(fido)
+isis = Cat(isis)
