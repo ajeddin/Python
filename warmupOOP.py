@@ -11,7 +11,6 @@ class Card():
         self.suit=suit
         self.rank=rank
         self.value= values [rank]
-
     def __str__(self):
         return self.rank + " of " + self.suit
 class Deck():
@@ -39,7 +38,6 @@ class Player():
         pass
     def __str__(self):
         return f"Player {self.name} has {len(self.all_cards)} cards." 
-
 # Game setup
 player_one = Player('One')
 player_two = Player('Two')
