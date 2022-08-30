@@ -52,3 +52,4 @@ class Chip:
         self.total +=self.bet
     def losebet(self):
         self.total-=self.bet
+        self.total-=self.bet
