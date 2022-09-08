@@ -1,6 +1,5 @@
 #  BLACKJACK
 # player can stand or hit, player must be able to pick how much to bet, keep track of player money, alert plater of loses,wins, busts. 
-from operator import truediv
 import random
 suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
 ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
